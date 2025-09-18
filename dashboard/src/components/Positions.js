@@ -7,8 +7,11 @@ const Positions = () => {
 
   let [allPositions, setAllPositions] = useState([]);
 
+  const API_URL = "https://stock-trading-platform-tpa4.onrender.com";
+
+
   useEffect(()=>{
-    axios.get("http://localhost:3002/allPositions").then((res)=>{
+    axios.get(`${API_URL}/allPositions`).then((res)=>{
       console.log(res.data);
       setAllPositions(res.data);
     })

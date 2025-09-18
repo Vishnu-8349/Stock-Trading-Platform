@@ -28,11 +28,13 @@ const Signup = () => {
       position: "bottom-right",
     });
 
+    const API_URL = "https://stock-trading-platform-tpa4.onrender.com";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/signup",
+        `${API_URL}/signup`,
         {
           ...inputValue,
         },

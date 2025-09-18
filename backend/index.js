@@ -18,7 +18,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://stock-trading-platform-1-vs3h.onrender.com",
+      "https://stock-trading-platform-2-l9hk.onrender.com"  
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

@@ -7,8 +7,11 @@ import { VerticalGraph } from "./VerticalGraph";
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
+  const API_URL = "https://stock-trading-platform-tpa4.onrender.com";
+
+
   useEffect(() => {
-    axios.get("http://localhost:3002/allHoldings").then((res) => {
+    axios.get(`${API_URL}/allHoldings`).then((res) => {
       console.log(res.data);
       setAllHoldings(res.data);
     });

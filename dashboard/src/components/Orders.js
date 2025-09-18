@@ -3,8 +3,11 @@ import axios from "axios";
 
 const Orders = () => {
     const [allOrders, setAllOrders] = useState([]);
+
+    const API_URL = "https://stock-trading-platform-tpa4.onrender.com";
+
     useEffect(() => {
-      axios.get("http://localhost:3002/allOrders").then((res) => {
+      axios.get(`${API_URL}/allOrders`).then((res) => {
         console.log(res.data);
         setAllOrders(res.data);
       });

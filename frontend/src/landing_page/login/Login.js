@@ -44,7 +44,7 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("https://stock-trading-platform-2-l9hk.onrender.com");
         }, 1000);
       } else {
         handleError(message);

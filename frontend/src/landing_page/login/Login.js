@@ -27,7 +27,7 @@ const Login = () => {
       position: "bottom-left",
     });
 
-    const API_URL = "https://stock-trading-platform-tpa4.onrender.com";
+  const API_URL = "https://stock-trading-platform-tpa4.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +44,8 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("https://stock-trading-platform-2-l9hk.onrender.com");
+          // navigate("https://stock-trading-platform-2-l9hk.onrender.com");
+          window.location.href = "https://stock-trading-platform-dashboard.onrender.com";
         }, 1000);
       } else {
         handleError(message);

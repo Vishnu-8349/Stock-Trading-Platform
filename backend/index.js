@@ -198,37 +198,57 @@ app.use("/", authRoute);
 //   res.send("Done!")
 // });
 
+
+// Root route for Render health check
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
 app.get("/allHoldings", async (req, res) => {
-  let allHoldings = await HoldingsModel.find({});
-  res.json(allHoldings);
+  try {
+    const holdings = await HoldingsModel.find({});
+    res.json(holdings);
+  } catch (err) {
+    res.status(500).send("Error fetching holdings");
+  }
 });
 
 app.get("/allPositions", async (req, res) => {
-  let allPositions = await PositionsModel.find({});
-  res.json(allPositions);
+  try {
+    const positions = await PositionsModel.find({});
+    res.json(positions);
+  } catch (err) {
+    res.status(500).send("Error fetching positions");
+  }
 });
 
 app.post("/newOrder", async (req, res) => {
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    qty: req.body.qty,
-    price: req.body.price,
-    mode: req.body.mode,
+  try {
+    const newOrder = new OrdersModel(req.body);
+    await newOrder.save();
+    res.send("Order saved!");
+  } catch (err) {
+    res.status(500).send("Error saving order");
+  }
+});
+
+app.get("/allOrders", async (req, res) => {
+  try {
+    const orders = await OrdersModel.find({});
+    res.json(orders);
+  } catch (err) {
+    res.status(500).send("Error fetching orders");
+  }
+});
+
+// Connect DB first, then start server
+mongoose.connect(uri)
+  .then(() => {
+    console.log("DB connected");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("MongoDB connection failed:", err);
   });
-
-  newOrder.save();
-
-  res.send("Order saved!");
-});
-
-app.get("/allOrders", async(req,res)=>{
-  let allOrders = await OrdersModel.find({});
-  res.json(allOrders);
-})
-
-
-app.listen(PORT, () => {
-  console.log("server started");
-  mongoose.connect(uri);
-  console.log("DB connected");
-});

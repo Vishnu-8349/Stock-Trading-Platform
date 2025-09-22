@@ -19,7 +19,7 @@ const app = express();
 app.use(
   cors({
     origin: ["https://stock-trading-platform-1-vs3h.onrender.com",
-      "https://stock-trading-platform-steel.vercel.app/"  
+      "https://stock-trading-platform-steel.vercel.app"  
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,

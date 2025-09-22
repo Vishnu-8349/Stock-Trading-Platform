@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GeneralContext from "./GeneralContext";
 import { Tooltip, Grow } from "@mui/material";
-import { watchlist } from "../data/data";
+import axios from "axios";
+// import { watchlist } from "../data/data";
 import {
   BarChartOutlined,
   KeyboardArrowDown,
@@ -11,9 +12,24 @@ import {
 import { useContext } from "react";
 import { DoughnutChart } from "./DoughnutChart";
 
-const labels = watchlist.map((subArray) => subArray["name"]);
+// const labels = watchlist.map((subArray) => subArray["name"]);
 
 const WatchList = () => {
+
+  const [watchlist, setWatchlist] = useState([]);
+
+  const API_URL = "https://stock-trading-platform-tpa4.onrender.com";
+
+
+  useEffect(() => {
+    axios.get(`${API_URL}/allHoldings`).then((res) => {
+      console.log(res.data);
+      setWatchlist(res.data);
+    });
+  }, []);
+
+  const labels = watchlist.map((subArray) => subArray["name"]);
+
   const data = {
     labels,
     datasets: [

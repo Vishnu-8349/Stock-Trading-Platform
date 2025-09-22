@@ -45,7 +45,7 @@ const Login = () => {
         handleSuccess(message);
         setTimeout(() => {
           // navigate("https://stock-trading-platform-2-l9hk.onrender.com");
-          window.location.href = "https://stock-trading-platform-2-l9hk.onrender.com/";
+          window.location.href = "https://stock-trading-platform-steel.vercel.app/";
         }, 1000);
       } else {
         handleError(message);

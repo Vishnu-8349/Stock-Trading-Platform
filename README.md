@@ -3,7 +3,7 @@
 # 📈 Stock Trading Platform (MERN Stack)
 
 🔗 **Live Demo:** [https://stock-trading-platform-1-vs3h.onrender.com/](https://stock-trading-platform-1-vs3h.onrender.com/)
-🔗 **GitHub Repository:** (Add your GitHub repo link here)
+🔗 **GitHub Repository:** (https://github.com/Vishnu-8349/Stock-Trading-Platform)
 
 ---
 
